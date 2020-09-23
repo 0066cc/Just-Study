@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+body {
+overflow: hidden;
+margin: 0 auto;
+padding: 0rem;
+background: #0066cc;
+}
+
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+#container{
+margin: 0 auto;
+padding: 0rem;
+height: 100vh;
+width: 100vw;
+       max-width: 100%;
+       max-height: 100%;
+display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         flex-wrap: wrap;
+         align-content: center;
+         -webkit-transition: background 5s linear;
+         -moz-transition: background 5s linear;
+         -ms-transition: background 5s linear;
+         -o-transition: background 5s linear;
+transition: background 5s linear;
+
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+            font-family: 'IBM Plex Mono', monospace;
+
+
+}
+
+.timerContainer{
+    text-align: center;
+    align-self: center;
+margin: 0 auto;
+color: white;
+}
+
+.information{
+margin: 0 auto;
+padding: 0rem;
+         font-weight: bold;
+         -webkit-transition: opacity 1s linear ;
+         -moz-transition: opacity 1s linear;
+         -ms-transition: opacity 1s linear;
+         -o-transition: opacity 1s linear;
+transition: opacity 1s linear;
+
+}
+
+
+.timer{
+    font-weight: 100;
+    -webkit-transition: opacity 1s linear;
+    -moz-transition: opacity 1s linear;
+    -ms-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
+transition: opacity 1s linear;
+
+}
+
+#studyTimer > input{
+width: 14vmin;
+
+
+}
+#studyTimerDivider {
+display: inline;
+width: 14vmin;
+margin: 0 auto;
+padding: 0rem;
+       text-align: center;
+        align-self: center;
+}
+#studyTimerDivider {
+display: inline;
+width: 6vmin;
+padding: 0rem;
+       text-align: center;
+margin: 0 auto;
+        align-self: center;
+}
+
+#breakTimer,
+#studyTimer {
+display: inline;
+}
+
+#breakTimer > * {
+    font-size: 6vmin;
+display: inline;
+
+}
+#studyTimer > * {
+display: inline;
+         font-size: 12vmin;
+
+}
+
+#breakTimer > input{
+width: 8vmin;
+
+}
+
+input, textarea, select{
+outline: none;
+color: white;
+       background-color: transparent;
+border: none;
+
+}
+
+.btn
+{
+    font-weight: 100;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+color: white;
+height: 96px;
+width: 96px;
+       font-weight: bold;
+border: 2px solid white;
+        border-radius: 50%;
+        -webkit-transition: opacity 0.1s linear;
+        -moz-transition: opacity 0.1s linear;
+        -ms-transition: opacity 0.1s linear;
+        -o-transition: opacity 0.1s linear;
+transition: opacity 0.1s linear;
+opacity: 0.6;
+margin: 1rem;
+cursor: pointer;
+
+}
+
+.btn:hover{
+opacity: 1;
+
+}
+
+.btn:disabled{
+opacity: 0.2;
+cursor: default;
+}
+.btn:focus{
+outline: none;
+
+}
+.btn:active{
+opacity: 0.8;
+border: 3px solid white;
+}
+
+#btnRow{
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#credit{
+position:absolute;
+bottom:0;
+right:0;
+padding: 3rem;
+color: white;
+       font-weight: bold;
+       text-decoration: none;
+       -webkit-touch-callout: none; /* iOS Safari */
+       -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+       -ms-user-select: none; /* Internet Explorer/Edge */
+       user-select: none;
+
+
+}

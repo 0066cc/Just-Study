@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    var studyTimeMins = 0;
-    var studyTimeSecs = 10;
+    var studyTimeMins = 25;
+    var studyTimeSecs = 0;
 
-    var breakTimeMins = 0;
-    var breakTimeSecs = 10;
+    var breakTimeMins = 5;
+    var breakTimeSecs = 0;
 
 
     handleFormatting();
@@ -21,40 +21,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     document.getElementById("startStudyBtn").disabled = false;
     document.getElementById("cancelStudyBtn").disabled = true;
+
     var studyTime = null;
     var breakTime = null;
 
-    var initialStudyMinutes = studyTimeMins;
-    var initialStudySeconds = studyTimeSecs
+    var initialStudyMinutes = null;
+    var initialStudySeconds = null
 
-        var initialBreakMinutes = breakTimeMins
-        var initialBreakSeconds = breakTimeSecs
-
-
-        document.getElementById("startStudyBtn").addEventListener("click", function(){
-            console.log("jsdfg")
-                console.log(document.getElementById("studyTimerMinutes").value)
-                console.log(document.getElementById("studyTimerSeconds").value)
-                console.log(document.getElementById("breakTimerMinutes").value)
-                console.log(document.getElementById("breakTimerSeconds").value)
+        var initialBreakMinutes = null
+        var initialBreakSeconds = null;
 
 
-                initialStudyMinutes = document.getElementById("studyTimerMinutes").value;
-            initialStudySeconds = document.getElementById("studyTimerSeconds").value;
-            initialBreakMinutes = document.getElementById("breakTimerMinutes").value;
-            initialBreakSeconds = document.getElementById("breakTimerSeconds").value;
+    document.getElementById("startStudyBtn").addEventListener("click", function(){
 
-            console.log("CALLED")
-                console.log(initialStudyMinutes)
-                console.log(initialStudySeconds)
+        initialStudyMinutes = document.getElementById("studyTimerMinutes").value;
+        initialStudySeconds = document.getElementById("studyTimerSeconds").value;
 
-                console.log(initialBreakMinutes)
-                console.log(initialBreakSeconds)
-                console.log("HJ")
+        initialBreakMinutes = document.getElementById("breakTimerMinutes").value;
+        initialBreakSeconds = document.getElementById("breakTimerSeconds").value;
 
+        startStudyTimer()});
 
-
-                startStudyTimer()});
     document.getElementById("cancelStudyBtn").addEventListener("click", function(){ cancelStudyTimer()});
 
 
@@ -72,9 +59,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function startStudyTimer(){
 
-        console.log("STUDY")
 
-            document.getElementById("studyTimerMinutes").disabled = true;
+        document.getElementById("studyTimerMinutes").disabled = true;
         document.getElementById("studyTimerSeconds").disabled = true;
         document.getElementById("breakTimerMinutes").disabled = true;
         document.getElementById("breakTimerSeconds").disabled = true;
@@ -98,40 +84,46 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("cancelStudyBtn").style.borderColor = "white";
         document.getElementById("cancelStudyBtn").style.color = "white";
-        document.getElementById("credit").style.color = "white";
+        document.getElementById("siteLink").style.color = "white";
+        document.getElementById("audioLink").style.color = "white";
+
 
 
         document.getElementById("breakTimer").style.opacity = "0";
         document.getElementById("infoStudyTimer").style.opacity = "0";
         document.getElementById("infoBreakTimer").style.opacity = "0";
 
-        studyTime = setInterval(function() {
 
-            if(studyTimeSecs - 1 < 0){
-                if(studyTimeMins != 0){
-                    studyTimeMins = studyTimeMins - 1
+        studyTimeMins = initialStudyMinutes
+            studyTimeSecs =            initialStudySeconds
+            var audio = new Audio('assets/study.mp3');
+        audio.play()
+            studyTime = setInterval(function() {
+
+                if(studyTimeSecs - 1 < 0){
+                    if(studyTimeMins != 0){
+                        studyTimeMins = studyTimeMins - 1
+                    }
+                    studyTimeSecs = 59
+                } else {
+                    studyTimeSecs = studyTimeSecs - 1
                 }
-                studyTimeSecs = 59
-            } else {
-                studyTimeSecs = studyTimeSecs - 1
-            }
-            handleFormatting();
-            document.getElementById("studyTimerMinutes").value = studyTimeMins;
-            document.getElementById("studyTimerSeconds").value = studyTimeSecs;
+                handleFormatting();
+                document.getElementById("studyTimerMinutes").value = studyTimeMins;
+                document.getElementById("studyTimerSeconds").value = studyTimeSecs;
 
 
-            if (studyTimeMins == 0 && studyTimeSecs == 0) {
-                clearInterval(studyTime);
-                studyTime = null;
-                breakTimeMins = initialBreakMinutes;
-                breakTimeSecs = initialBreakSeconds;
-                startbreakTimer();
-            }
-        }, 1000);
+                if (studyTimeMins == 0 && studyTimeSecs == 0) {
+                    clearInterval(studyTime);
+                    studyTime = null;
+                    breakTimeMins = initialBreakMinutes;
+                    breakTimeSecs = initialBreakSeconds;
+                    startbreakTimer();
+                }
+            }, 1000);
     }
 
     function startbreakTimer(){
-        console.log("BREAK");
 
         document.getElementById("container").style.backgroundColor = "white";
         document.getElementById("startStudyBtn").style.borderColor = "#0066cc";
@@ -144,36 +136,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("studyTimerDivider").style.color = "#0066cc";
         document.getElementById("studyTimerSeconds").style.color = "#0066cc";
 
-        document.getElementById("credit").style.color = "#0066cc";
+        document.getElementById("siteLink").style.color = "#0066cc";
+        document.getElementById("audioLink").style.color = "#0066cc";
+        breakTimeMins = initialBreakMinutes
+            breakTimeSecs =           initialBreakSeconds
+            var audio = new Audio('assets/break.mp3');
+        audio.play()
 
-        breakTime = setInterval(function() {
+            breakTime = setInterval(function() {
 
-            if(breakTimeSecs - 1 < 0){
-                if(breakTimeMins != 0){
-                    breakTimeMins = breakTimeMins - 1;
+                if(breakTimeSecs - 1 < 0){
+                    if(breakTimeMins != 0){
+                        breakTimeMins = breakTimeMins - 1;
+                    }
+                    breakTimeSecs = 59;
+                } else {
+                    breakTimeSecs = breakTimeSecs - 1
                 }
-                breakTimeSecs = 59;
-            } else {
-                breakTimeSecs = breakTimeSecs - 1
-            }
-            handleFormatting();
-            document.getElementById("studyTimerMinutes").value = breakTimeMins;
-            document.getElementById("studyTimerSeconds").value = breakTimeSecs;
+                handleFormatting();
+                document.getElementById("studyTimerMinutes").value = breakTimeMins;
+                document.getElementById("studyTimerSeconds").value = breakTimeSecs;
 
 
-            if (breakTimeMins == 0 && breakTimeSecs == 0) {
-                clearInterval(breakTime);
-                breakTime = null;
-                console.log("NEXT")
+                if (breakTimeMins == 0 && breakTimeSecs == 0) {
+                    clearInterval(breakTime);
+                    breakTime = null;
                     studyTimeMins = initialStudyMinutes;
-                studyTimeSecs = initialStudySeconds;
-                document.getElementById("studyTimerMinutes").value = studyTimeMins;
-                document.getElementById("studyTimerSeconds").value = studyTimeSecs;
+                    studyTimeSecs = initialStudySeconds;
+                    document.getElementById("studyTimerMinutes").value = studyTimeMins;
+                    document.getElementById("studyTimerSeconds").value = studyTimeSecs;
 
 
-                startStudyTimer();
-            }
-        }, 1000);
+                    startStudyTimer();
+                }
+            }, 1000);
     }
 
 
@@ -199,7 +195,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("cancelStudyBtn").style.borderColor = "white";
         document.getElementById("cancelStudyBtn").style.color = "white";
-        document.getElementById("credit").style.color = "white";
+        document.getElementById("siteLink").style.color = "white";
+        document.getElementById("audioLink").style.color = "white";
 
 
 

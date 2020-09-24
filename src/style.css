@@ -81,14 +81,14 @@ display: inline;
 width: 14vmin;
 margin: 0 auto;
 padding: 0rem;
-       text-align: center;
-        align-self: center;
+         text-align: center;
+         align-self: center;
 }
 #studyTimerDivider {
 display: inline;
 width: 6vmin;
 padding: 0rem;
-       text-align: center;
+         text-align: center;
 margin: 0 auto;
         align-self: center;
 }
@@ -174,15 +174,21 @@ position:absolute;
 bottom:0;
 right:0;
 padding: 3rem;
+         -webkit-touch-callout: none; /* iOS Safari */
+         -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+         -ms-user-select: none; /* Internet Explorer/Edge */
+         user-select: none;
+
+
+}
+#credit a{
+display: block;
+padding: 0.25rem;
+         text-decoration: none;
+         text-align: right;
 color: white;
        font-weight: bold;
-       text-decoration: none;
-       -webkit-touch-callout: none; /* iOS Safari */
-       -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-       -ms-user-select: none; /* Internet Explorer/Edge */
-       user-select: none;
-
 
 }

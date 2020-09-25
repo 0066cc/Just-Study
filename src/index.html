@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" type="image/png" href="favicon.png"/>
 <title>Just Study</title>
 <script src="script.js"></script>
 <link rel="stylesheet" href="style.css">
@@ -13,7 +14,7 @@
 Study Time:
 </p>
 <h1 class="timer" id="studyTimer">
-<input id="studyTimerMinutes" type="number" min="1" max="90" size="2" maxlength="2">
+<input id="studyTimerMinutes" type="number" min="0" max="90" size="2" maxlength="2">
 <p id="studyTimerDivider">:</p>
 <input id="studyTimerSeconds" type="number" min="1" max="59" size="2" maxlength="2">
 </h1>
@@ -23,23 +24,25 @@ Study Time:
 Break Time:
 </p>
 <h2 class="timer" id="breakTimer">
-<input id="breakTimerMinutes" type="number" min="1"  max="90" size="2" maxlength="2">
+<input id="breakTimerMinutes" type="number" min="0"  max="90" size="2" maxlength="2">
 <p id="breakTimerDivider">:</p>
 <input id="breakTimerSeconds" type="number" min="1" max="59" size="2" maxlength="2">
 </h2>
 </div>
 <div id="btnRow">
 <button type="button" class="btn" id="startStudyBtn">Start</button>
+<button type="button" class="btn" id="defaultBtn">Defaults</button>
 <button type="button" class="btn" id="cancelStudyBtn">Stop</button>
 </div>
 </div>
 <p id="credit">
 <a id="siteLink" href="https://0066cc.com">
-Created by 0066cc
+Written by 0066cc
 </a>
 <a id="audioLink" href="https://www.zapsplat.com/">
 Audio by Zapsplat
 </a>
+<a id="iconLink" href="https://www.flaticon.com/authors/freepik" title="Freepik">Icon by Freepik from www.flaticon.com</a>
 </p>
 </body>
 </html>

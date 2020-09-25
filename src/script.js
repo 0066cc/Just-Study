@@ -1,9 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    var studyTimeMins = 25;
-    var studyTimeSecs = 0;
+    var defaultStudyTimeMins = 25;
+    var defaultStudyTimeSecs = 0;
 
-    var breakTimeMins = 5;
-    var breakTimeSecs = 0;
+    var defaultBreakTimeMins = 5;
+    var defaultBreakTimeSecs = 0;
+
+
+    var studyTimeMins = defaultStudyTimeMins;
+    var studyTimeSecs = defaultStudyTimeSecs;
+
+    var breakTimeMins = defaultBreakTimeMins;
+    var breakTimeSecs = defaultBreakTimeSecs;
 
     var studyTime = null;
     var breakTime = null;
@@ -16,10 +23,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // Initial timer value setup
     document.getElementById("studyTimerMinutes").value = studyTimeMins;
-    document.getElementById("studyTimerSeconds").value = "0" + studyTimeSecs;
+    document.getElementById("studyTimerSeconds").value = studyTimeSecs;
 
-    document.getElementById("breakTimerMinutes").value = "0" + breakTimeMins;
-    document.getElementById("breakTimerSeconds").value = "0" + breakTimeSecs;
+    document.getElementById("breakTimerMinutes").value = breakTimeMins;
+    document.getElementById("breakTimerSeconds").value = breakTimeSecs;
+
+    correctBreakInputTimes();
+    correctStudyInputTimes();
 
     //User shouldn't be able to cancel a timer if it isn't running yet.
     document.getElementById("startStudyBtn").disabled = false;
@@ -51,6 +61,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         cancelStudyTimer();
     })
 
+    document.getElementById("defaultBtn").addEventListener("click", function(){
+        //Cancel the timer when the user clicks on the cancel button
+        restoreTimerDefaults();
+    })
+
 
     // setInterval( checkFocus, 5000 )
 
@@ -61,9 +76,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
             alert("Get back here");
         }
     }
+
     document.onbeforeunload = function() {
 
     }
+
+    function restoreTimerDefaults(){
+        studyTimeMins = defaultStudyTimeMins;
+        studyTimeSecs = defaultStudyTimeSecs;
+
+        breakTimeMins = defaultBreakTimeMins;
+        breakTimeSecs = defaultBreakTimeSecs;
+
+
+        document.getElementById("studyTimerMinutes").value = studyTimeMins;
+        document.getElementById("studyTimerSeconds").value = studyTimeSecs;
+
+        document.getElementById("breakTimerMinutes").value = breakTimeMins;
+        document.getElementById("breakTimerSeconds").value = breakTimeSecs;
+
+        correctBreakInputTimes();
+        correctStudyInputTimes();
+
+        breakStartSound();
+
+    }
+
 
     function disableTimerValueInput(){
         document.getElementById("studyTimerMinutes").disabled = true;
@@ -71,17 +109,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("breakTimerMinutes").disabled = true;
         document.getElementById("breakTimerSeconds").disabled = true;
+
+
+        document.getElementById("defaultBtn").disabled = true;
     }
 
     function enableTimerValueInput(){
         document.getElementById("startStudyBtn").disabled = false;
         document.getElementById("cancelStudyBtn").disabled = true;
+        document.getElementById("defaultBtn").disabled = false;
     }
 
     function enableCancelTimerButton(){
         document.getElementById("startStudyBtn").disabled = true;
         document.getElementById("cancelStudyBtn").disabled = false;
-
+        document.getElementById("defaultBtn").disabled = true;
     }
 
     function enableStudyModeStyling(){
@@ -97,12 +139,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("cancelStudyBtn").style.color = "white";
         document.getElementById("siteLink").style.color = "white";
         document.getElementById("audioLink").style.color = "white";
+        document.getElementById("iconLink").style.color = "white";
 
         document.getElementById("breakTimer").style.opacity = "0";
         document.getElementById("infoStudyTimer").style.opacity = "0";
         document.getElementById("infoBreakTimer").style.opacity = "0";
-
-
     }
 
     function studyStartSound(){
@@ -134,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             //Ensure the values displayed are formatted correctly
-            handleFormatting();
+            handleTimerRunningFormatting();
             document.getElementById("studyTimerMinutes").value = studyTimeMins;
             document.getElementById("studyTimerSeconds").value = studyTimeSecs;
 
@@ -151,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function enableBreakModeStyling(){
-
         document.getElementById("container").style.backgroundColor = "white";
         document.getElementById("startStudyBtn").style.borderColor = "#0066cc";
         document.getElementById("startStudyBtn").style.color = "#0066cc";
@@ -165,6 +205,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("siteLink").style.color = "#0066cc";
         document.getElementById("audioLink").style.color = "#0066cc";
+        document.getElementById("iconLink").style.color = "#0066cc";
 
     }
 
@@ -174,8 +215,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
     function startbreakTimer(){
+        breakStartSound();
+        enableBreakModeStyling();
         breakTimeMins = initialBreakMinutes;
-        breakTimeSecs =           initialBreakSeconds;
+        breakTimeSecs = initialBreakSeconds;
         breakTime = setInterval(function() {
 
             //handle minute rollover
@@ -188,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 breakTimeSecs = breakTimeSecs - 1;
             }
             //Ensure the values displayed are formatted correctly
-            handleFormatting()
+            handleTimerRunningFormatting()
                 document.getElementById("studyTimerMinutes").value = breakTimeMins;
             document.getElementById("studyTimerSeconds").value = breakTimeSecs;
 
@@ -201,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 studyTimeSecs = initialStudySeconds;
                 document.getElementById("studyTimerMinutes").value = studyTimeMins;
                 document.getElementById("studyTimerSeconds").value = studyTimeSecs;
-
+                studyStartSound();
                 startStudyTimer();
             }
         }, 1000) //every second
@@ -220,6 +263,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("cancelStudyBtn").style.color = "white";
         document.getElementById("siteLink").style.color = "white";
         document.getElementById("audioLink").style.color = "white";
+        document.getElementById("iconLink").style.color = "white";
 
         document.getElementById("breakTimer").style.opacity = "1";
         document.getElementById("infoStudyTimer").style.opacity = "1";
@@ -243,10 +287,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         //Restore initial timer values
         document.getElementById("studyTimerMinutes").value = initialStudyMinutes;
         document.getElementById("studyTimerSeconds").value = initialStudySeconds;
-        handleFormatting()
+        enableSetupModeStyling();
+        correctStudyInputTimes();
+        correctBreakInputTimes();
 
-            //Allow user to input timer values again
-            enableTimerValueInput();
+        //Allow user to input timer values again
+        enableTimerValueInput();
 
         //Clear the value stored for the timer, a new value will be added when the next timer start
         studyTimeMins = null;
@@ -259,19 +305,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function correctStudyInputTimes(){
         //If input value is less than 10 then prefix a 0
         if( document.getElementById("studyTimerMinutes").value < 10){
-            if( document.getElementById("studyTimerMinutes").value[0] != "0"){
+            if( document.getElementById("studyTimerMinutes").value[0] != 0){
                 document.getElementById("studyTimerMinutes").value= "0" +  document.getElementById("studyTimerMinutes").value;
             }
-        }else if(document.getElementById("studyTimerMinutes").value == 0){
-            document.getElementById("studyTimerMinutes").value = "0" +document.getElementById("studyTimerMinutes").value ;
+        }
+
+        if(document.getElementById("studyTimerMinutes").value == 0){
+            document.getElementById("studyTimerMinutes").value = "00";
         }
 
         if( document.getElementById("studyTimerSeconds").value < 10){
-            if( document.getElementById("studyTimerSeconds").value[0] != "0"){
+            if( document.getElementById("studyTimerSeconds").value[0] != 0){
                 document.getElementById("studyTimerSeconds").value= "0" +  document.getElementById("studyTimerSeconds").value;
             }
-        }else if(document.getElementById("studyTimerSeconds").value == 0){
-            document.getElementById("studyTimerSeconds").value = "0" +document.getElementById("studyTimerSeconds").value ;
+        }
+
+        if(document.getElementById("studyTimerSeconds").value == 0){
+            document.getElementById("studyTimerSeconds").value = "00";
         }
 
         //If input value is greater than the allowed time then reduce the time to within limits
@@ -286,19 +336,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function correctBreakInputTimes(){
         //If input value is less than 10 then prefix a 0
         if( document.getElementById("breakTimerMinutes").value < 10){
-            if( document.getElementById("breakTimerMinutes").value[0] != "0"){
+            if( document.getElementById("breakTimerMinutes").value[0] != 0){
                 document.getElementById("breakTimerMinutes").value= "0" +  document.getElementById("breakTimerMinutes").value;
             }
-        }else if(  document.getElementById("breakTimerMinutes").value == 0){
-            document.getElementById("breakTimerMinutes").value           = "0" +document.getElementById("breakTimerMinutes").value ;
+        }
+        if(  document.getElementById("breakTimerMinutes").value == 0){
+            document.getElementById("breakTimerMinutes").value           = "00";
         }
 
         if( document.getElementById("breakTimerSeconds").value < 10){
-            if( document.getElementById("breakTimerSeconds").value[0] != "0"){
-                document.getElementById("breakTimerSeconds").value= "0" +  document.getElementById("breakTimerSeconds").value;
+            if( document.getElementById("breakTimerSeconds").value[0] != 0){
+                document.getElementById("breakTimerSeconds").value= "0" + document.getElementById("breakTimerSeconds").value;
             }
-        }else if(document.getElementById("breakTimerSeconds").value == 0){
-            document.getElementById("breakTimerSeconds").value = "0" +document.getElementById("breakTimerSeconds").value ;
+        }
+        if(document.getElementById("breakTimerSeconds").value == 0){
+            document.getElementById("breakTimerSeconds").value = "00";
         }
 
         //If input value is greater than the allowed time then reduce the time to within limits
@@ -317,29 +369,42 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if(studyTimeSecs[0] != "0"){
                 studyTimeSecs = "0" + studyTimeSecs;
             }
-        }        if(studyTimeMins > 0 && studyTimeMins < 10){
+        }
+
+        if(studyTimeMins > 0 && studyTimeMins < 10){
             if(studyTimeMins[0] != "0"){
                 studyTimeMins = "0" + studyTimeMins;
             }
-        }else if(studyTimeMins == 0){
-            studyTimeMins= "0" + studyTimeMins;
+        }
+
+        if(studyTimeMins == 0){
+            studyTimeMins = "00";
+        }
+
+        if(studyTimeSecs == 0){
+            studyTimeSecs = "00";
         }
 
 
         if(breakTimeMins > 0 && breakTimeMins < 10){
             if(breakTimeMins[0] != "0"){
-                breakTimeMins = "0" + breakTimeMins;
+                breakTimeMins = "00" ;
             }
-        }else if(breakTimeMins == 0){
-            breakTimeMins = "0" + breakTimeMins;
         }
 
         if(breakTimeSecs > 0 && breakTimeSecs< 10){
             if(breakTimeSecs[0] != "0"){
                 breakTimeSecs = "0" + breakTimeSecs;
             }
-        }else if(breakTimeSecs == 0){
-            breakTimeSecs = "0" + breakTimeSecs;
         }
+
+        if(breakTimeSecs == 0){
+            breakTimeSecs = "00" ;
+        }
+        if(breakTimeMins == 0){
+            breakTimeMins = "00" ;
+        }
+
+
     }
 })

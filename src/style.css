@@ -123,6 +123,15 @@ display: inline;
 display: inline;
 
 }
+#studyTimerMinutes,
+#breakTimerMinutes{
+    text-align: right;
+}
+#studyTimerSeconds,
+#breakTimerSeconds{
+    text-align: left;
+}
+
 #studyTimer > *{
          font-size: 12vmin;
 

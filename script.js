@@ -74,19 +74,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     })
 
 
-    // setInterval( checkFocus, 5000 )
-
-    function checkFocus() {
-
-        if ( document.hasFocus() ) {
-        } else {
-            alert("Get back here");
-        }
-    }
-
-    document.onbeforeunload = function() {
-
-    }
 
     function restoreTimerDefaults(){
         studyTimeMins = defaultStudyTimeMins;
@@ -105,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         correctBreakInputTimes();
         correctStudyInputTimes();
 
-        breakStartSound();
+        resetSound();
 
     }
 
@@ -157,6 +144,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var audio = new Audio('assets/study.mp3');
         audio.play();
     }
+
+    function resetSound(){
+        var audio = new Audio('assets/reset.mp3');
+        audio.play();
+    }
+
+    function breakStartSound(){
+        var audio = new Audio('assets/break.mp3');
+        audio.play();
+    }
+
 
     function startStudyTimer(){
         disableTimerValueInput();
@@ -214,11 +212,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("audioLink").style.color = "#0066cc";
         document.getElementById("iconLink").style.color = "#0066cc";
 
-    }
-
-    function breakStartSound(){
-        var audio = new Audio('assets/break.mp3');
-        audio.play();
     }
 
     function startbreakTimer(){

@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="manifest" href="manifest.json">
+
 <link rel="icon" type="image/png" href="favicon.png"/>
 <title>Just Study</title>
 <script src="script.js"></script>
@@ -14,9 +17,9 @@
 Study Time:
 </p>
 <h1 class="timer" id="studyTimer">
-<input id="studyTimerMinutes" type="number" min="0" max="90" size="2" maxlength="2">
+<input id="studyTimerMinutes" type="number" min="1" max="90" size="2" maxlength="2">
 <p id="studyTimerDivider">:</p>
-<input id="studyTimerSeconds" type="number" min="1" max="59" size="2" maxlength="2">
+<input id="studyTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
 </h1>
 </div>
 <div class="timerContainer">
@@ -24,9 +27,9 @@ Study Time:
 Break Time:
 </p>
 <h2 class="timer" id="breakTimer">
-<input id="breakTimerMinutes" type="number" min="0"  max="90" size="2" maxlength="2">
+<input id="breakTimerMinutes" type="number" min="1"  max="90" size="2" maxlength="2">
 <p id="breakTimerDivider">:</p>
-<input id="breakTimerSeconds" type="number" min="1" max="59" size="2" maxlength="2">
+<input id="breakTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
 </h2>
 </div>
 <div id="btnRow">

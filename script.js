@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function(event) {
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+            .then(function() {
+                console.log('Service Worker Registered');
+            });
+    }
     var defaultStudyTimeMins = 25;
     var defaultStudyTimeSecs = 0;
 
@@ -33,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //User shouldn't be able to cancel a timer if it isn't running yet.
     document.getElementById("startStudyBtn").disabled = false;
+    document.getElementById("defaultBtn").disabled = true;
     document.getElementById("cancelStudyBtn").disabled = true;
 
     //Make sure the values displayed on the timer are correct
@@ -110,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("breakTimerMinutes").disabled = true;
         document.getElementById("breakTimerSeconds").disabled = true;
 
-
         document.getElementById("defaultBtn").disabled = true;
     }
 
@@ -118,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("startStudyBtn").disabled = false;
         document.getElementById("cancelStudyBtn").disabled = true;
         document.getElementById("defaultBtn").disabled = false;
+        disableResetIfAlreadyDefault();
     }
 
     function enableCancelTimerButton(){
@@ -175,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             //Ensure the values displayed are formatted correctly
-            handleTimerRunningFormatting();
+            handleStudyTimerRunningFormatting();
             document.getElementById("studyTimerMinutes").value = studyTimeMins;
             document.getElementById("studyTimerSeconds").value = studyTimeSecs;
 
@@ -219,8 +226,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         enableBreakModeStyling();
         breakTimeMins = initialBreakMinutes;
         breakTimeSecs = initialBreakSeconds;
-        breakTime = setInterval(function() {
 
+        breakTime = setInterval(function() {
             //handle minute rollover
             if(breakTimeSecs - 1 < 0){
                 if(breakTimeMins != 0){
@@ -231,8 +238,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 breakTimeSecs = breakTimeSecs - 1;
             }
             //Ensure the values displayed are formatted correctly
-            handleTimerRunningFormatting()
-                document.getElementById("studyTimerMinutes").value = breakTimeMins;
+            handleBreakTimerRunningFormatting();
+            document.getElementById("studyTimerMinutes").value = breakTimeMins;
             document.getElementById("studyTimerSeconds").value = breakTimeSecs;
 
             if (breakTimeMins == 0 && breakTimeSecs == 0) {
@@ -303,6 +310,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function correctStudyInputTimes(){
+        //disable the reset button if the values present are already the default
+        disableResetIfAlreadyDefault();
         //If input value is less than 10 then prefix a 0
         if( document.getElementById("studyTimerMinutes").value < 10){
             if( document.getElementById("studyTimerMinutes").value[0] != 0){
@@ -333,7 +342,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
+    function disableResetIfAlreadyDefault(){
+        if(document.getElementById("studyTimerSeconds").value != defaultStudyTimeSecs || document.getElementById("studyTimerMinutes").value != defaultStudyTimeMins || document.getElementById("breakTimerSeconds").value != defaultBreakTimeSecs || document.getElementById("breakTimerMinutes").value != defaultBreakTimeMins){
+            document.getElementById("defaultBtn").disabled = false;
+        } else {
+            document.getElementById("defaultBtn").disabled = true;
+        }
+    }
     function correctBreakInputTimes(){
+        //disable the reset button if the values present are already the default
+        disableResetIfAlreadyDefault();
         //If input value is less than 10 then prefix a 0
         if( document.getElementById("breakTimerMinutes").value < 10){
             if( document.getElementById("breakTimerMinutes").value[0] != 0){
@@ -363,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 
-    function handleTimerRunningFormatting(){
+    function handleStudyTimerRunningFormatting(){
         //If input value is less than 10 then prefix a 0
         if(studyTimeSecs > 0 && studyTimeSecs < 10){
             if(studyTimeSecs[0] != "0"){
@@ -384,27 +402,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
         if(studyTimeSecs == 0){
             studyTimeSecs = "00";
         }
-
-
-        if(breakTimeMins > 0 && breakTimeMins < 10){
-            if(breakTimeMins[0] != "0"){
-                breakTimeMins = "00" ;
-            }
-        }
-
-        if(breakTimeSecs > 0 && breakTimeSecs< 10){
+    }
+    function handleBreakTimerRunningFormatting(){
+        //If input value is less than 10 then prefix a 0
+        if(breakTimeSecs > 0 && breakTimeSecs < 10){
             if(breakTimeSecs[0] != "0"){
                 breakTimeSecs = "0" + breakTimeSecs;
             }
         }
 
-        if(breakTimeSecs == 0){
-            breakTimeSecs = "00" ;
+        if(breakTimeMins> 0 && breakTimeMins< 10){
+            if(breakTimeMins[0] != "0"){
+                breakTimeMins= "0" + breakTimeMins;
+            }
         }
+
         if(breakTimeMins == 0){
-            breakTimeMins = "00" ;
+            breakTimeMins = "00";
         }
 
-
+        if(breakTimeSecs == 0){
+            breakTimeSecs = "00";
+        }
     }
+
 })

@@ -15,7 +15,7 @@ background: #0066cc;
     /* For more global styling like positioning timers and other components */
 margin: 0 auto;
 padding: 0rem;
-            font-family: var(--main-font), monospace;
+         font-family: var(--main-font), monospace;
 height: 100vh;
 width: 100vw;
        max-width: 100%;
@@ -32,7 +32,7 @@ display: flex;
          -moz-transition: background 5s linear;
          -ms-transition: background 5s linear;
          -o-transition: background 5s linear;
-            transition: background 5s linear;
+transition: background 5s linear;
 
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -53,15 +53,15 @@ color: white;
 }
 
 .information,
-.timer{
-    /* For fading components in and out */
-    -webkit-transition: opacity 1s linear;
-    -moz-transition: opacity 1s linear;
-    -ms-transition: opacity 1s linear;
-    -o-transition: opacity 1s linear;
+    .timer{
+        /* For fading components in and out */
+        -webkit-transition: opacity 1s linear;
+        -moz-transition: opacity 1s linear;
+        -ms-transition: opacity 1s linear;
+        -o-transition: opacity 1s linear;
 transition: opacity 1s linear;
 
-}
+    }
 
 .information{
 margin: 0 auto;
@@ -133,7 +133,7 @@ display: inline;
 }
 
 #studyTimer > *{
-         font-size: 12vmin;
+    font-size: 12vmin;
 
 }
 
@@ -191,7 +191,7 @@ border: 3px solid white;
 /* Misc components */
 
 #credit{
-         font-family: var(--main-font), monospace;
+    font-family: var(--main-font), monospace;
 position:absolute;
 opacity: 0.6;
 bottom:0;

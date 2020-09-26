@@ -2,7 +2,7 @@ var cacheName = 'Just-Study';
 var filesToCache = [
   '/',
   '/index.html',
-  '/style.css'
+  '/style.css',
   '/script.js'
 ];
 self.addEventListener('install', function(e) {

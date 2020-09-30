@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var defaultStudyTimeMins = 25;
     var defaultStudyTimeSecs = 0;
 
+    var studyCounter = 0;
+
     var defaultBreakTimeMins = 5;
     var defaultBreakTimeSecs = 0;
 
@@ -131,13 +133,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("cancelStudyBtn").style.borderColor = "white";
         document.getElementById("cancelStudyBtn").style.color = "white";
+
+        document.getElementById("defaultBtn").style.borderColor = "white";
+        document.getElementById("defaultBtn").style.color = "white";
+
         document.getElementById("siteLink").style.color = "white";
         document.getElementById("audioLink").style.color = "white";
         document.getElementById("iconLink").style.color = "white";
 
+        document.getElementById("counterInfo").style.color = "white";
+        document.getElementById("counterInfo").style.opacity = "0.5";
+
         document.getElementById("breakTimer").style.opacity = "0";
         document.getElementById("infoStudyTimer").style.opacity = "0";
         document.getElementById("infoBreakTimer").style.opacity = "0";
+
     }
 
     function studyStartSound(){
@@ -183,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             handleStudyTimerRunningFormatting();
             document.getElementById("studyTimerMinutes").value = studyTimeMins;
             document.getElementById("studyTimerSeconds").value = studyTimeSecs;
+            document.title = studyTimeMins + ":" + studyTimeSecs;
 
             if (studyTimeMins == 0 && studyTimeSecs == 0) {
                 //Stop the running timer
@@ -204,6 +215,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("cancelStudyBtn").style.borderColor = "#0066cc";
         document.getElementById("cancelStudyBtn").style.color = "#0066cc";
 
+        document.getElementById("defaultBtn").style.borderColor = "#0066cc";
+        document.getElementById("defaultBtn").style.color = "#0066cc";
+
+
         document.getElementById("studyTimerMinutes").style.color = "#0066cc";
         document.getElementById("studyTimerDivider").style.color = "#0066cc";
         document.getElementById("studyTimerSeconds").style.color = "#0066cc";
@@ -212,9 +227,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("audioLink").style.color = "#0066cc";
         document.getElementById("iconLink").style.color = "#0066cc";
 
+        document.getElementById("counterInfo").style.color = "#0066cc";
+        document.getElementById("counterInfo").style.opacity = "1";
+
     }
 
     function startbreakTimer(){
+        studyCounter++;
+        document.getElementById('counterInfo').innerHTML = "Session " + studyCounter;
         breakStartSound();
         enableBreakModeStyling();
         breakTimeMins = initialBreakMinutes;
@@ -234,6 +254,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             handleBreakTimerRunningFormatting();
             document.getElementById("studyTimerMinutes").value = breakTimeMins;
             document.getElementById("studyTimerSeconds").value = breakTimeSecs;
+            document.title = breakTimeMins + ":" + breakTimeSecs;
 
             if (breakTimeMins == 0 && breakTimeSecs == 0) {
                 //Stop the running timer
@@ -261,6 +282,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         document.getElementById("cancelStudyBtn").style.borderColor = "white";
         document.getElementById("cancelStudyBtn").style.color = "white";
+
+        document.getElementById("defaultBtn").style.borderColor = "white";
+        document.getElementById("defaultBtn").style.color = "white";
+
         document.getElementById("siteLink").style.color = "white";
         document.getElementById("audioLink").style.color = "white";
         document.getElementById("iconLink").style.color = "white";
@@ -274,11 +299,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.getElementById("breakTimerMinutes").disabled = false;
         document.getElementById("breakTimerSeconds").disabled = false;
 
+        document.getElementById("counterInfo").style.color = "white";
+        document.getElementById("counterInfo").style.opacity = "1";
 
     }
 
     function cancelStudyTimer(){
         //Stop any running timers
+        document.title = "Just Study";
+        studyCounter = 0;
+        document.getElementById('counterInfo').innerHTML = "Session " + studyCounter;
         clearInterval(studyTime);
         clearInterval(breakTime);
         studyTime = null;

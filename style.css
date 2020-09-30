@@ -28,11 +28,11 @@ display: flex;
          flex-wrap: wrap;
          align-content: center;
 
-         -webkit-transition: background 5s linear;
-         -moz-transition: background 5s linear;
-         -ms-transition: background 5s linear;
-         -o-transition: background 5s linear;
-transition: background 5s linear;
+         -webkit-transition: background 5s linear, color 5s linear;
+         -moz-transition: background 5s linear, color 5s linear;
+         -ms-transition: background 5s linear, color 5s linear;
+         -o-transition: background 5s linear, color 5s linear;
+transition: background 5s linear, color 5s linear;
 
             -webkit-touch-callout: none;
             -webkit-user-select: none;
@@ -55,11 +55,12 @@ color: white;
 .information,
     .timer{
         /* For fading components in and out */
-        -webkit-transition: opacity 1s linear;
-        -moz-transition: opacity 1s linear;
-        -ms-transition: opacity 1s linear;
-        -o-transition: opacity 1s linear;
+        -webkit-transition: opacity 1s linear, color 1s linear;
+        -moz-transition: opacity 1s linear, color 1s linear;
+        -ms-transition: opacity 1s linear, color 1s linear;
+        -o-transition: opacity 1s linear, color 1s linear;
 transition: opacity 1s linear;
+color: white;
 
     }
 
@@ -153,11 +154,11 @@ width: 96px;
        font-weight: bold;
 border: 2px solid white;
         border-radius: 50%;
-        -webkit-transition: opacity 0.1s linear;
-        -moz-transition: opacity 0.1s linear;
-        -ms-transition: opacity 0.1s linear;
-        -o-transition: opacity 0.1s linear;
-transition: opacity 0.1s linear;
+        -webkit-transition: opacity 0.1s linear, color 0.1s linear;
+        -moz-transition: opacity 0.1s linear, color 0.1s linear;
+        -ms-transition: opacity 0.1s linear, color 0.1s linear;
+        -o-transition: opacity 0.1s linear, color 0.1s linear;
+transition: opacity 0.1s linear, color 0.1s linear;
 opacity: 0.6;
 margin: 1rem;
 cursor: pointer;

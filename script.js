@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-    if('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js')
-            .then(function() {
-                console.log('Service Worker Registered');
-            });
-    }
     var defaultStudyTimeMins = 25;
     var defaultStudyTimeSecs = 0;
 

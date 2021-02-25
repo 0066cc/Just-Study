@@ -5,41 +5,41 @@
 }
 
 body {
-overflow: hidden;
-margin: 0 auto;
-padding: 0rem;
-background: #0066cc;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0rem;
+    background: #0066cc;
 }
 
 #container{
     /* For more global styling like positioning timers and other components */
-margin: 0 auto;
-padding: 0rem;
-         font-family: var(--main-font), monospace;
-height: 100vh;
-width: 100vw;
-       max-width: 100%;
-       max-height: 100%;
+    margin: 0 auto;
+    padding: 0rem;
+    font-family: var(--main-font), monospace;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    max-height: 100%;
 
-display: flex;
-         align-items: center;
-         justify-content: center;
-         flex-direction: column;
-         flex-wrap: wrap;
-         align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
 
-         -webkit-transition: background 5s linear, color 5s linear;
-         -moz-transition: background 5s linear, color 5s linear;
-         -ms-transition: background 5s linear, color 5s linear;
-         -o-transition: background 5s linear, color 5s linear;
-transition: background 5s linear, color 5s linear;
+    -webkit-transition: background 5s linear, color 5s linear;
+    -moz-transition: background 5s linear, color 5s linear;
+    -ms-transition: background 5s linear, color 5s linear;
+    -o-transition: background 5s linear, color 5s linear;
+    transition: background 5s linear, color 5s linear;
 
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
 }
 
@@ -47,27 +47,27 @@ transition: background 5s linear, color 5s linear;
     /* Position and style the timers */
     text-align: center;
     align-self: center;
-margin: 0 auto;
-padding: 2rem;
-color: white;
+    margin: 0 auto;
+    padding: 2rem;
+    color: white;
 }
 
 .information,
-    .timer{
-        /* For fading components in and out */
-        -webkit-transition: opacity 1s linear, color 1s linear;
-        -moz-transition: opacity 1s linear, color 1s linear;
-        -ms-transition: opacity 1s linear, color 1s linear;
-        -o-transition: opacity 1s linear, color 1s linear;
-transition: opacity 1s linear;
-color: white;
+.timer{
+    /* For fading components in and out */
+    -webkit-transition: opacity 1s linear, color 1s linear;
+    -moz-transition: opacity 1s linear, color 1s linear;
+    -ms-transition: opacity 1s linear, color 1s linear;
+    -o-transition: opacity 1s linear, color 1s linear;
+    transition: opacity 1s linear;
+    color: white;
 
-    }
+}
 
 .information{
-margin: 0 auto;
-padding: 0rem;
-         font-weight: 400;
+    margin: 0 auto;
+    padding: 0rem;
+    font-weight: 400;
 }
 
 input[type=number]::-webkit-inner-spin-button {
@@ -79,49 +79,49 @@ input[type=number]::-webkit-inner-spin-button {
 #studyTimer > input,
 #breakTimer > input{
     font-weight: 100;
-width: 18vmin;
-       font-family: var(--timer-font), monospace;
+    width: 18vmin;
+    font-family: var(--timer-font), monospace;
 }
 
 #breakTimer > input{
-width: 8vmin;
+    width: 8vmin;
 }
 
 input, textarea, select{
     /* Prevent unneccessary styling of input tags */
-outline: none;
-color: white;
-       background-color: transparent;
-border: none;
-        font-family: var(--main-font), monospace;
+    outline: none;
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-family: var(--main-font), monospace;
 
 }
 
 #breakTimerDivider ,
 #studyTimerDivider {
-display: inline;
-width: 18vmin;
-       font-family: var(--timer-font), monospace;
-       font-weight: 100;
-margin: 0 auto;
-padding: 0rem;
-         text-align: center;
-         align-self: center;
+    display: inline;
+    width: 18vmin;
+    font-family: var(--timer-font), monospace;
+    font-weight: 100;
+    margin: 0 auto;
+    padding: 0rem;
+    text-align: center;
+    align-self: center;
 }
 
 #breakTimerDivider{
-width: 6vmin;
+    width: 6vmin;
 }
 
 #breakTimer,
 #studyTimer {
-display: inline;
+    display: inline;
 }
 
 #studyTimer > *,
 #breakTimer > * {
     font-size: 6vmin;
-display: inline;
+    display: inline;
 
 }
 #studyTimerMinutes,
@@ -135,7 +135,6 @@ display: inline;
 
 #studyTimer > *{
     font-size: 12vmin;
-
 }
 
 
@@ -148,40 +147,40 @@ display: inline;
     text-align: center;
     font-size: 16px;
     font-family: var(--main-font), monospace;
-color: white;
-height: 96px;
-width: 96px;
-       font-weight: bold;
-border: 2px solid white;
-        border-radius: 50%;
-        -webkit-transition: opacity 0.1s linear, color 0.1s linear;
-        -moz-transition: opacity 0.1s linear, color 0.1s linear;
-        -ms-transition: opacity 0.1s linear, color 0.1s linear;
-        -o-transition: opacity 0.1s linear, color 0.1s linear;
-transition: opacity 0.1s linear, color 0.1s linear;
-opacity: 0.6;
-margin: 1rem;
-cursor: pointer;
+    color: white;
+    height: 96px;
+    width: 96px;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 50%;
+    -webkit-transition: opacity 0.1s linear, color 0.1s linear;
+    -moz-transition: opacity 0.1s linear, color 0.1s linear;
+    -ms-transition: opacity 0.1s linear, color 0.1s linear;
+    -o-transition: opacity 0.1s linear, color 0.1s linear;
+    transition: opacity 0.1s linear, color 0.1s linear;
+    opacity: 0.6;
+    margin: 1rem;
+    cursor: pointer;
 
 }
 
 .btn:hover{
-opacity: 1;
+    opacity: 1;
 
 }
 
 .btn:disabled{
-opacity: 0.2;
-cursor: default;
+    opacity: 0.2;
+    cursor: default;
 }
 .btn:focus{
-outline: none;
+    outline: none;
 
 }
 
 .btn:active{
-opacity: 0.8;
-border: 3px solid white;
+    opacity: 0.8;
+    border: 3px solid white;
 }
 
 #btnRow{
@@ -193,27 +192,44 @@ border: 3px solid white;
 
 #credit{
     font-family: var(--main-font), monospace;
-position:absolute;
-opacity: 0.6;
-bottom:0;
-right:0;
-padding: 3rem;
+    position:absolute;
+    opacity: 0.6;
+    bottom:0;
+    right:0;
+    padding: 3rem;
 
-         -webkit-touch-callout: none;
-         -webkit-user-select: none;
-         -khtml-user-select: none;
-         -moz-user-select: none;
-         -ms-user-select: none;
-         user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
 }
 #credit a{
 
-display: block;
-padding: 0.25rem;
-         text-decoration: none;
-         text-align: right;
-color: white;
-       font-weight: bold;
+    display: block;
+    padding: 0.25rem;
+    text-decoration: none;
+    text-align: right;
+    color: white;
+    font-weight: bold;
+
+}
+
+@media (orientation: portrait) {
+    #credit {
+        display: none;
+    }
+    .btn{
+        height: 48px;
+        width: 96px;
+        border-radius: 4px;
+        display: block;
+        justify-content: space-between;
+    }
+    #btnRow{
+        flex-direction: column;
+    }
 
 }

@@ -4,52 +4,60 @@
         <meta charset="utf-8">
         <meta name="description" content="A study timer to keep you on track. It's as simple as that.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="manifest.webmanifest">
         <link rel="icon" type="image/png" href="favicon.png"/>
         <meta name="theme-color" content="#0066cc">
+        <script>
+            if (navigator.serviceWorker.controller) {
+            } else {
+                navigator.serviceWorker.register("sw.js").then(function(reg) {
+                });
+            }
+        </script>
         <title>Just Study</title>
         <script src="script.js"></script>
+        <script src="script.js"></script>
         <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div id="container">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' https://fonts.gstatic.com/; style-src 'self' https://fonts.googleapis.com/ 'unsafe-inline';">
+        <body>
+            <div id="container">
                 <p class="information" id="counterInfo">
                 Session 0
                 </p>
-            <div class="timerContainer">
-                <p class="information" id="infoStudyTimer">
-                Study Time:
-                </p>
-                <h1 class="timer" id="studyTimer">
-                    <input id="studyTimerMinutes" type="number" min="1" max="90" size="2" maxlength="2">
-                    <p id="studyTimerDivider">:</p>
-                    <input id="studyTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
-                </h1>
+                <div class="timerContainer">
+                    <p class="information" id="infoStudyTimer">
+                    Study Time:
+                    </p>
+                    <h1 class="timer" id="studyTimer">
+                        <input id="studyTimerMinutes" type="number" min="1" max="90" size="2" maxlength="2">
+                        <p id="studyTimerDivider">:</p>
+                        <input id="studyTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
+                    </h1>
+                </div>
+                <div class="timerContainer">
+                    <p class="information" id="infoBreakTimer">
+                    Break Time:
+                    </p>
+                    <h2 class="timer" id="breakTimer">
+                        <input id="breakTimerMinutes" type="number" min="1"  max="90" size="2" maxlength="2">
+                        <p id="breakTimerDivider">:</p>
+                        <input id="breakTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
+                    </h2>
+                </div>
+                <div id="btnRow">
+                    <button type="button" class="btn" id="startStudyBtn">Start</button>
+                    <button type="button" class="btn" id="defaultBtn">Reset</button>
+                    <button type="button" class="btn" id="cancelStudyBtn">Stop</button>
+                </div>
             </div>
-            <div class="timerContainer">
-                <p class="information" id="infoBreakTimer">
-                Break Time:
-                </p>
-                <h2 class="timer" id="breakTimer">
-                    <input id="breakTimerMinutes" type="number" min="1"  max="90" size="2" maxlength="2">
-                    <p id="breakTimerDivider">:</p>
-                    <input id="breakTimerSeconds" type="number" min="0" max="59" size="2" maxlength="2">
-                </h2>
-            </div>
-            <div id="btnRow">
-                <button type="button" class="btn" id="startStudyBtn">Start</button>
-                <button type="button" class="btn" id="defaultBtn">Reset</button>
-                <button type="button" class="btn" id="cancelStudyBtn">Stop</button>
-            </div>
-        </div>
-        <p id="credit">
-        <a id="siteLink" href="https://atthis.link">
-            Written by 0066cc
-        </a>
-        <a id="audioLink" href="https://www.zapsplat.com/">
-            Audio by Zapsplat
-        </a>
-        <a id="iconLink" href="https://www.flaticon.com/authors/freepik" title="Freepik">Icon by Freepik from www.flaticon.com</a>
-        </p>
-    </body>
+            <p id="credit">
+            <a id="siteLink" href="https://atthis.link">
+                Written by 0066cc
+            </a>
+            <a id="audioLink" href="https://www.zapsplat.com/">
+                Audio by Zapsplat
+            </a>
+            <a id="iconLink" href="https://www.flaticon.com/authors/freepik" title="Freepik">Icon by Freepik from www.flaticon.com</a>
+            </p>
+        </body>
 </html>

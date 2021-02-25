@@ -6,7 +6,7 @@ const cacheName = "cache-juststudy-1.0.1";
 
 var preLoad = function(){
     return caches.open(cacheName).then(function(cache) {
-        return cache.addAll([ '/', '/index.html', '/style.css', '/script.js', '/assets/break.mp3',  '/assets/reset.mp3',  '/assets/study.mp3' ]);
+        return cache.addAll([ 'index.html', 'style.css', 'script.js', 'assets/break.mp3',  'assets/reset.mp3',  'assets/study.mp3' ]);
     });
 };
 
@@ -43,7 +43,7 @@ var returnFromCache = function(request){
     return caches.open(cacheName).then(function (cache) {
         return cache.match(request).then(function (matching) {
             if(!matching || matching.status == 404) {
-                return cache.match('/404.html');
+                return cache.match('404.html');
             } else {
                 return matching;
             }

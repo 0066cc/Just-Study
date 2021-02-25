@@ -6,7 +6,7 @@ const cacheName = "cache-juststudy-1.0.1";
 
 var preLoad = function(){
     return caches.open(cacheName).then(function(cache) {
-return cache.addAll(['/index.html', '/style.css', '/script.js', '/assets/break.mp3',  '/assets/reset.mp3',  '/assets/study.mp3' ]);
+        return cache.addAll([ '/', '/index.html', '/style.css', '/script.js', '/assets/break.mp3',  '/assets/reset.mp3',  '/assets/study.mp3' ]);
     });
 };
 
